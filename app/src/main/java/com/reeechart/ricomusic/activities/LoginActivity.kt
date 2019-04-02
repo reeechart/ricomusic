@@ -2,6 +2,7 @@ package com.reeechart.ricomusic.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.reeechart.ricomusic.R
 
 class LoginActivity : AppCompatActivity() {
 

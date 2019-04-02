@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.reeechart.ricomusic.activities.PickContextActivity">
+    tools:context="com.reeechart.ricomusic.activities.PickLocationActivity">
 
 </android.support.constraint.ConstraintLayout>
