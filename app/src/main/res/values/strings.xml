@@ -7,4 +7,9 @@
     <string name="register">Register</string>
     <string name="dont_have_account">Don\'t Have Account?</string>
     <string name="username">Username</string>
+    <string name="travel">Travel</string>
+    <string name="library">Library</string>
+    <string name="canteen">Canteen</string>
+    <string name="gym">Gym</string>
+    <string name="office">Office</string>
 </resources>

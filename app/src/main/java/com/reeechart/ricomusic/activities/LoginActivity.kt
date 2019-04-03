@@ -17,4 +17,10 @@ class LoginActivity : AppCompatActivity() {
         val registerIntent = Intent(this, RegisterActivity::class.java)
         this.startActivity(registerIntent)
     }
+
+    fun login(view: View) {
+        val pickLocationIntent = Intent(this, PickLocationActivity::class.java)
+        this.startActivity(pickLocationIntent)
+        this.finish()
+    }
 }
