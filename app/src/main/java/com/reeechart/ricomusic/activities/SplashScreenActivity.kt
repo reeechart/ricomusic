@@ -19,7 +19,7 @@ class SplashScreenActivity : AppCompatActivity() {
     private val activityChangeHandler = Handler()
 
     private val activityChangeRunnable = Runnable {
-        val preferences: SharedPreferences = getSharedPreferences("username", Context.MODE_PRIVATE)
+        val preferences: SharedPreferences = getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
         val username: String? = preferences.getString("username", null)
 
         Log.d(DEBUG_TAG, "Checking authentication...")

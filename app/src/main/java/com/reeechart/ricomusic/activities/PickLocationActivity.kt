@@ -1,5 +1,8 @@
 package com.reeechart.ricomusic.activities
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -26,11 +29,21 @@ class PickLocationActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
             ).show()
         } else {
+            val preferences: SharedPreferences = getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
+            var editor = preferences.edit().apply {
+                putString("location", selectedLocation.text.toString())
+                commit()
+            }
+
             Toast.makeText(
                     this,
-                    selectedLocation.text,
+                    String.format("You selected: %s", selectedLocation.text),
                     Toast.LENGTH_SHORT
             ).show()
+
+            val mainActivityIntent = Intent(this, MainActivity::class.java)
+            this.startActivity(mainActivityIntent)
+            this.finish()
         }
     }
 }
