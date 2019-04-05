@@ -8,12 +8,14 @@ import android.util.Log
 import com.reeechart.ricomusic.R
 import com.reeechart.ricomusic.fragments.BrowseFragment
 import com.reeechart.ricomusic.fragments.ProfileFragment
+import com.reeechart.ricomusic.fragments.SearchFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private val DEBUG_TAG: String = this.javaClass.simpleName
 
     private val browseFragment: BrowseFragment = BrowseFragment()
+    private val searchFragment: SearchFragment = SearchFragment()
     private val profileFragment: ProfileFragment = ProfileFragment()
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -27,8 +29,11 @@ class MainActivity : AppCompatActivity() {
 
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_dashboard -> {
-                Log.d(DEBUG_TAG, String.format("%s selected", getString(R.string.title_dashboard)))
+            R.id.navigation_search -> {
+                Log.d(DEBUG_TAG, String.format("%s selected", getString(R.string.title_search)))
+
+                transaction.replace(R.id.fragmentContainer, searchFragment)
+                transaction.commit()
 
                 return@OnNavigationItemSelectedListener true
             }
