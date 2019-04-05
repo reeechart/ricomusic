@@ -32,6 +32,7 @@
         android:background="@color/colorPrimary"
         android:drawableLeft="@drawable/ic_logout"
         android:drawablePadding="8dp"
+        android:onClick="logout"
         android:paddingEnd="16dp"
         android:paddingStart="16dp"
         android:text="Logout"

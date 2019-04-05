@@ -1,10 +1,12 @@
 package com.reeechart.ricomusic.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
 import com.reeechart.ricomusic.R
 import com.reeechart.ricomusic.fragments.BrowseFragment
 import com.reeechart.ricomusic.fragments.ProfileFragment
@@ -58,5 +60,11 @@ class MainActivity : AppCompatActivity() {
         transaction.commit()
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    }
+
+    fun logout(view: View) {
+        val logoutIntent = Intent(this, LoginActivity::class.java)
+        this.startActivity(logoutIntent)
+        this.finish()
     }
 }
