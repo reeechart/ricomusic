@@ -67,4 +67,9 @@ class MainActivity : AppCompatActivity() {
         this.startActivity(logoutIntent)
         this.finish()
     }
+
+    fun changeLocation(view: View) {
+        val changeLocationIntent = Intent(this, PickLocationActivity::class.java)
+        this.startActivity(changeLocationIntent)
+    }
 }

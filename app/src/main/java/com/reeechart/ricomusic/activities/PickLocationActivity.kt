@@ -42,6 +42,8 @@ class PickLocationActivity : AppCompatActivity() {
             ).show()
 
             val mainActivityIntent = Intent(this, MainActivity::class.java)
+            mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             this.startActivity(mainActivityIntent)
             this.finish()
         }
