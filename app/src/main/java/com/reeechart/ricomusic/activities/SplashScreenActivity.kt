@@ -12,7 +12,7 @@ import com.reeechart.ricomusic.R
 
 class SplashScreenActivity : AppCompatActivity() {
     companion object {
-        private val DEBUG_TAG: String = this::class.java.simpleName
+        private val DEBUG_TAG: String = this.javaClass.simpleName
         private val SPLASH_SCREEN_DURATION: Int = 2000
     }
 
