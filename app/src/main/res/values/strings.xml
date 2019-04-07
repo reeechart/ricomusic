@@ -16,4 +16,6 @@
     <string name="title_browse">Browse</string>
     <string name="title_search">Search</string>
     <string name="song_search_hint">Enter song title</string>
+    <string name="default_music_title">Title</string>
+    <string name="default_music_artist">Artist</string>
 </resources>
