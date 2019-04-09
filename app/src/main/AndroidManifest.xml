@@ -39,6 +39,8 @@
         <activity
             android:name=".activities.RegisterActivity"
             android:screenOrientation="portrait" />
+
+        <service android:name=".utils.LocationService" />
     </application>
 
 </manifest>
