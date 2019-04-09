@@ -31,7 +31,6 @@ class LocationService: Service() {
         override fun onProviderEnabled(p0: String?) {}
 
         override fun onProviderDisabled(p0: String?) {
-            Log.d("PROV DISABLE", "enabling location")
             val enableGpsIntent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
             enableGpsIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(enableGpsIntent)
@@ -55,6 +54,7 @@ class LocationService: Service() {
         locationManager = applicationContext.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         try {
             locationManager?.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0.0F, locationListener)
+            locationManager?.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0.0F, locationListener)
             Log.d("PASS", "PASS")
         } catch (e: SecurityException) {
             Toast.makeText(this.applicationContext, "Please enable location", Toast.LENGTH_SHORT).show()
