@@ -1,6 +1,8 @@
 package com.reeechart.ricomusic.activities
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.FragmentTransaction
@@ -63,6 +65,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun logout(view: View) {
+        val preferences: SharedPreferences = getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
+        preferences.edit().remove("username").apply()
         val logoutIntent = Intent(this, LoginActivity::class.java)
         this.startActivity(logoutIntent)
         this.finish()
