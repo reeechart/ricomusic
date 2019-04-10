@@ -1,8 +1,6 @@
 package com.reeechart.ricomusic.fragments
 
 import android.content.*
-import android.location.Location
-import android.opengl.Visibility
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
@@ -10,8 +8,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.TextView
 import android.widget.Toast
 import com.reeechart.ricomusic.R
 import com.reeechart.ricomusic.network.weather.WeatherApiService
@@ -39,7 +35,6 @@ class ProfileFragment: Fragment() {
         override fun onReceive(context: Context?, intent: Intent?) {
             val latitude = intent?.getDoubleExtra(LocationService.LATITUDE, Double.NaN) ?: Double.NaN
             val longitude = intent?.getDoubleExtra(LocationService.LONGITUDE, Double.NaN) ?: Double.NaN
-            var weatherCode: Int
 
             Log.d(DEBUG_TAG, "lat, long: $latitude, $longitude")
 
@@ -94,7 +89,11 @@ class ProfileFragment: Fragment() {
         locationName.text = location
     }
 
-    private fun setWeatherToView() {
+    fun setWeatherToView() {
+        val preferences: SharedPreferences = this.activity!!.getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
+        val weather = preferences.getString("weather", "Weather")
+        weatherProgressBar.visibility = View.VISIBLE
+        weatherName.text = weather
         val locationFetchIntent = Intent(context, LocationService::class.java)
         activity!!.startService(locationFetchIntent)
         activity!!.registerReceiver(locationReceiver, IntentFilter(LocationService.LOCATION_UPDATE))

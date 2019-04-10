@@ -242,6 +242,7 @@
                 android:layout_marginStart="8dp"
                 android:background="@color/colorPrimaryDark"
                 android:drawableLeft="@drawable/ic_util_refresh"
+                android:onClick="refreshWeather"
                 android:text="Refresh"
                 android:textColor="@android:color/white"
                 app:layout_constraintBottom_toBottomOf="parent"

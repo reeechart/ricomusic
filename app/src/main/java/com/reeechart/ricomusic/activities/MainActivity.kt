@@ -14,6 +14,7 @@ import com.reeechart.ricomusic.fragments.BrowseFragment
 import com.reeechart.ricomusic.fragments.ProfileFragment
 import com.reeechart.ricomusic.fragments.SearchFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 class MainActivity : AppCompatActivity() {
     private val DEBUG_TAG: String = this.javaClass.simpleName
@@ -75,5 +76,9 @@ class MainActivity : AppCompatActivity() {
     fun changeLocation(view: View) {
         val changeLocationIntent = Intent(this, PickLocationActivity::class.java)
         this.startActivity(changeLocationIntent)
+    }
+
+    fun refreshWeather(view: View) {
+        profileFragment.setWeatherToView()
     }
 }
