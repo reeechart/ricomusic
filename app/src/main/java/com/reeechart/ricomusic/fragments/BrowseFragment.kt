@@ -19,7 +19,6 @@ class BrowseFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_browse, container, false)
-        rootView.text.setText(R.string.title_browse)
         return rootView
     }
 }
