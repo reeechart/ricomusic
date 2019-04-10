@@ -13,11 +13,8 @@ class WeatherMapper {
         const val WEATHER_ERROR: String = "Error"
 
         fun mapWeather(inputCode: Int): String {
-            Log.d("input", inputCode.toString())
             val firstDigit: Int = inputCode.div(100)
-            Log.d("first", firstDigit.toString())
             val lastDigit: Int = inputCode.rem(10)
-            Log.d("last", lastDigit.toString())
             val weather = when (firstDigit) {
                 2, 3, 4, 5, 6 -> WEATHER_RAIN
                 7 -> WEATHER_CLOUDY

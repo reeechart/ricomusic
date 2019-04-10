@@ -46,8 +46,8 @@ class ProfileFragment: Fragment() {
                             { error -> Toast.makeText(activity, error.message, Toast.LENGTH_SHORT).show() }
                     )
 
-            weatherProgressBar.visibility = View.GONE
-            activity!!.unregisterReceiver(this)
+            weatherProgressBar?.visibility = View.GONE
+            activity?.unregisterReceiver(this)
         }
     }
 
@@ -72,6 +72,8 @@ class ProfileFragment: Fragment() {
         val preferences: SharedPreferences = this.activity!!.getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
         val username: String = preferences.getString("username", "")
         usernameInfo.text = username
+
+        Log.d(DEBUG_TAG, "Username set")
     }
 
     private fun setLocationToView() {
@@ -87,6 +89,8 @@ class ProfileFragment: Fragment() {
         }
 
         locationName.text = location
+
+        Log.d(DEBUG_TAG, "Location set")
     }
 
     fun setWeatherToView() {
@@ -100,21 +104,21 @@ class ProfileFragment: Fragment() {
     }
 
     private fun modifyWeatherInfo(weatherCode: Int) {
-        Log.d("TAG", weatherCode.toString())
         val weather: String = WeatherMapper.mapWeather(weatherCode)
 
-        val preferences: SharedPreferences = this.activity!!.getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
-        preferences.edit().apply {
+        val preferences: SharedPreferences? = this.activity?.getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
+        preferences?.edit()?.apply {
             putString("weather", weather)
             commit()
+            Log.d(DEBUG_TAG, "Weather written to preferences")
         }
 
-        weatherName.text = weather
+        weatherName?.text = weather
 
         when (weather) {
-            WeatherMapper.WEATHER_RAIN -> weatherIcon.background = ContextCompat.getDrawable(this.activity!!, R.drawable.ic_weather_rain)
-            WeatherMapper.WEATHER_CLOUDY -> weatherIcon.background = ContextCompat.getDrawable(this.activity!!, R.drawable.ic_weather_cloudy)
-            WeatherMapper.WEATHER_SUNNY -> weatherIcon.background = ContextCompat.getDrawable(this.activity!!, R.drawable.ic_weather_sunny)
+            WeatherMapper.WEATHER_RAIN -> weatherIcon?.background = ContextCompat.getDrawable(this.activity!!, R.drawable.ic_weather_rain)
+            WeatherMapper.WEATHER_CLOUDY -> weatherIcon?.background = ContextCompat.getDrawable(this.activity!!, R.drawable.ic_weather_cloudy)
+            WeatherMapper.WEATHER_SUNNY -> weatherIcon?.background = ContextCompat.getDrawable(this.activity!!, R.drawable.ic_weather_sunny)
         }
     }
 }
