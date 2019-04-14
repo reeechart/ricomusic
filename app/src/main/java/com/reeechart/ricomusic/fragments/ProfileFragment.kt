@@ -118,7 +118,7 @@ class ProfileFragment: Fragment() {
         when (weather) {
             WeatherMapper.WEATHER_RAIN -> weatherIcon?.background = ContextCompat.getDrawable(this.activity!!, R.drawable.ic_weather_rain)
             WeatherMapper.WEATHER_CLOUDY -> weatherIcon?.background = ContextCompat.getDrawable(this.activity!!, R.drawable.ic_weather_cloudy)
-            WeatherMapper.WEATHER_SUNNY -> weatherIcon?.background = ContextCompat.getDrawable(this.activity!!, R.drawable.ic_weather_sunny)
+            WeatherMapper.WEATHER_CLEAR -> weatherIcon?.background = ContextCompat.getDrawable(this.activity!!, R.drawable.ic_weather_sunny)
         }
     }
 }

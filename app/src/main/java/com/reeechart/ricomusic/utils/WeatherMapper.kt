@@ -9,7 +9,7 @@ class WeatherMapper {
     companion object {
         const val WEATHER_RAIN: String = "Rain"
         const val WEATHER_CLOUDY: String = "Cloudy"
-        const val WEATHER_SUNNY: String = "Sunny"
+        const val WEATHER_CLEAR: String = "Clear"
         const val WEATHER_ERROR: String = "Error"
 
         fun mapWeather(inputCode: Int): String {
@@ -19,7 +19,7 @@ class WeatherMapper {
                 2, 3, 4, 5, 6 -> WEATHER_RAIN
                 7 -> WEATHER_CLOUDY
                 8 -> if (lastDigit == 0) {
-                    WEATHER_SUNNY
+                    WEATHER_CLEAR
                 } else {
                     WEATHER_CLOUDY
                 }
