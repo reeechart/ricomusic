@@ -17,7 +17,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 /**
  * Created by Richard on 05-Apr-19.
@@ -96,11 +95,17 @@ class ProfileFragment: Fragment() {
     fun setWeatherToView() {
         val preferences: SharedPreferences = this.activity!!.getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
         val weather = preferences.getString("weather", "Weather")
-        weatherProgressBar.visibility = View.VISIBLE
-        weatherName.text = weather
+        weatherProgressBar?.visibility = View.VISIBLE
+        weatherName?.text = weather
+        weatherIcon?.background = when (weather) {
+            WeatherMapper.WEATHER_RAIN -> ContextCompat.getDrawable(this.activity!!, R.drawable.ic_weather_cloudy)
+            WeatherMapper.WEATHER_CLOUDY -> ContextCompat.getDrawable(this.activity!!, R.drawable.ic_weather_cloudy)
+            WeatherMapper.WEATHER_CLEAR -> ContextCompat.getDrawable(this.activity!!, R.drawable.ic_weather_sunny)
+            else -> ContextCompat.getDrawable(this.activity!!, R.drawable.ic_weather_rain)
+        }
         val locationFetchIntent = Intent(context, LocationService::class.java)
-        activity!!.startService(locationFetchIntent)
-        activity!!.registerReceiver(locationReceiver, IntentFilter(LocationService.LOCATION_UPDATE))
+        activity?.startService(locationFetchIntent)
+        activity?.registerReceiver(locationReceiver, IntentFilter(LocationService.LOCATION_UPDATE))
     }
 
     private fun modifyWeatherInfo(weatherCode: Int) {
