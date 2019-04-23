@@ -1,11 +1,13 @@
 package com.reeechart.ricomusic.activities
 
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.FragmentTransaction
+import android.support.v4.app.NotificationCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
@@ -14,7 +16,6 @@ import com.reeechart.ricomusic.fragments.BrowseFragment
 import com.reeechart.ricomusic.fragments.ProfileFragment
 import com.reeechart.ricomusic.fragments.SearchFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_profile.*
 
 class MainActivity : AppCompatActivity() {
     private val DEBUG_TAG: String = this.javaClass.simpleName
@@ -80,5 +81,10 @@ class MainActivity : AppCompatActivity() {
 
     fun refreshWeather(view: View) {
         profileFragment.setWeatherToView()
+    }
+
+    fun playSampleMusic(view: View) {
+        val playMusicIntent = Intent(this, NowPlayingActivity::class.java)
+        this.startActivity(playMusicIntent)
     }
 }
