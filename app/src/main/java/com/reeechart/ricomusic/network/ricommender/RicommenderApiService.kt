@@ -2,6 +2,7 @@ package com.reeechart.ricomusic.network.ricommender
 
 import com.reeechart.ricomusic.models.AuthResponse
 import com.reeechart.ricomusic.models.RecommendationResponse
+import com.reeechart.ricomusic.models.User
 import io.reactivex.Observable
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -30,7 +31,7 @@ interface RicommenderApiService {
     fun login(@Path(value="username", encoded=true) username: String): Observable<AuthResponse.Result>
 
     @POST("/user/register")
-    fun register(@Field("username") username: String)
+    fun register(@Body user: User): Observable<AuthResponse.Result>
 
     companion object {
         private val BASE_URL: String = "http://157.230.243.204"
