@@ -18,4 +18,6 @@
     <string name="song_search_hint">Enter song title</string>
     <string name="default_music_title">Title</string>
     <string name="default_music_artist">Artist</string>
+    <string name="heading_for_you_section">For You</string>
+    <string name="registering_text">Registering... This might take a while</string>
 </resources>
