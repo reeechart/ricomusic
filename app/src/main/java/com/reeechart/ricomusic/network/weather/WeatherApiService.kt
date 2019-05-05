@@ -12,14 +12,14 @@ import retrofit2.http.Query
  * Created by Reeechart on 06-Apr-19.
  */
 interface WeatherApiService {
-    @GET("data/2.5/weather")
+    @GET("/data/2.5/weather")
     fun getWeather(@Query("lat") latitude: Double,
                    @Query("lon") longitude: Double,
                    @Query("appid") appId: String = APP_ID):
             Observable<WeatherResponse.Result>
 
     companion object {
-        private val BASE_URL: String = "https://api.openweathermap.org/"
+        private val BASE_URL: String = "https://api.openweathermap.org"
         const val APP_ID: String = "240a82b19382a07d9db628295c24a9f7"
 
         fun create(): WeatherApiService {
