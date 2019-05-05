@@ -20,6 +20,7 @@ class NowPlayingActivity : AppCompatActivity() {
     private val DEBUG_TAG: String = this.javaClass.simpleName
     companion object {
         private const val SAMPLE_URI = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+        private const val RICOMMENDER_URI = "http://157.230.243.204/music/stream/143"
     }
 
     private lateinit var musicPlayer: SimpleExoPlayer
@@ -34,7 +35,7 @@ class NowPlayingActivity : AppCompatActivity() {
 
         val dataSourceFactory = DefaultDataSourceFactory(this, Util.getUserAgent(this, getString(R.string.app_name)))
 
-        val mediaSource: MediaSource = ExtractorMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(SAMPLE_URI))
+        val mediaSource: MediaSource = ExtractorMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(RICOMMENDER_URI))
 
         musicPlayer.prepare(mediaSource)
         musicPlayer.playWhenReady = true
