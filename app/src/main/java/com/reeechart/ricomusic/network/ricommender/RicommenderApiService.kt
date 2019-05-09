@@ -1,6 +1,7 @@
 package com.reeechart.ricomusic.network.ricommender
 
 import com.reeechart.ricomusic.models.AuthResponse
+import com.reeechart.ricomusic.models.Music
 import com.reeechart.ricomusic.models.RecommendationResponse
 import com.reeechart.ricomusic.models.User
 import io.reactivex.Observable
@@ -15,10 +16,10 @@ import retrofit2.http.*
 interface RicommenderApiService {
     @GET("/music/recommendation")
     fun getRecommendation(@Query("n") n: Int,
-                           @Query("user") user: String,
-                           @Query("loc") location: String,
-                           @Query("weather") weather: String):
-            Observable<RecommendationResponse.Result>
+                          @Query("user") user: String,
+                          @Query("loc") location: String,
+                          @Query("weather") weather: String):
+            Observable<List<Music>>
 
     @POST("/history/add")
     fun addHistory(@Field("user") user: String,
