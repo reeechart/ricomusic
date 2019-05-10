@@ -2,7 +2,6 @@ package com.reeechart.ricomusic.network.ricommender
 
 import com.reeechart.ricomusic.models.AuthResponse
 import com.reeechart.ricomusic.models.Music
-import com.reeechart.ricomusic.models.RecommendationResponse
 import com.reeechart.ricomusic.models.User
 import io.reactivex.Observable
 import retrofit2.Retrofit
