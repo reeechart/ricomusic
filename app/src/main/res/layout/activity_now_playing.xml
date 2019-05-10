@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.reeechart.ricomusic.activities.NowPlayingActivity">
 
-    <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+    <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/musicPlayerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -15,17 +15,19 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:visibility="visible"
-        app:controller_layout_id="@layout/component_music_playback_controller"
+        app:auto_show="true"
         app:default_artwork="@drawable/ic_music_album"
         app:hide_on_touch="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:player_layout_id="@layout/component_music_player"
+        app:show_buffering="true"
         app:show_timeout="0"
         app:use_artwork="true"
         app:use_controller="true">
 
-    </com.google.android.exoplayer2.ui.SimpleExoPlayerView>
+    </com.google.android.exoplayer2.ui.PlayerView>
 
 </android.support.constraint.ConstraintLayout>
