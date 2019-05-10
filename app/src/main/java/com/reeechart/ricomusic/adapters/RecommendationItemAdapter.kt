@@ -35,6 +35,10 @@ class RecommendationItemAdapter(ctx: Context?, musicList: List<Music>): Recycler
         holder.musicArtist.text = music.artist
         holder.parentView.setOnClickListener(View.OnClickListener {
             val playMusicIntent = Intent(context, NowPlayingActivity::class.java)
+            playMusicIntent.putExtra("musicId", music.id)
+            playMusicIntent.putExtra("musicRank", music.musicRank)
+            playMusicIntent.putExtra("musicTitle", music.title)
+            playMusicIntent.putExtra("musicArtist", music.artist)
             context?.startActivity(playMusicIntent)
         })
     }
@@ -51,13 +55,6 @@ class RecommendationItemAdapter(ctx: Context?, musicList: List<Music>): Recycler
         var musicArtist = itemView.findViewById<TextView>(R.id.musicArtist)
         var musicAlbumArtwork = itemView.findViewById<FrameLayout>(R.id.musicAlbumArtwork)
         var musicRank = itemView.findViewById<TextView>(R.id.musicRank)
-
-        fun bindWithListener(item: Music, listener: View.OnClickListener) {
-            parentView.setOnClickListener({
-                val playMusicIntent: Intent = Intent(context, NowPlayingActivity::class.java)
-                context?.startActivity(playMusicIntent)
-            })
-        }
     }
 
 }

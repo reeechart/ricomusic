@@ -20,14 +20,23 @@ class NowPlayingActivity : AppCompatActivity() {
     private val DEBUG_TAG: String = this.javaClass.simpleName
     companion object {
         private const val SAMPLE_URI = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-        private const val RICOMMENDER_URI = "http://157.230.243.204/music/stream/143"
+        private const val RICOMMENDER_URI = "http://157.230.243.204/music/stream/"
     }
 
     private lateinit var musicPlayer: SimpleExoPlayer
+    private var musicId: Int = 0
+    private var musicRank: Int = 0
+    private var musicTitle: String = ""
+    private var musicArtist: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_now_playing)
+
+        musicId = intent.getIntExtra("musicId", 0)
+        musicRank = intent.getIntExtra("musicRank", 0)
+        musicTitle = intent.getStringExtra("musicTitle")
+        musicArtist = intent.getStringExtra("musicArtist")
 
 //        val playMusicIntent = Intent(this, AudioPlayerService::class.java)
 //        Util.startForegroundService(this, playMusicIntent)
@@ -35,7 +44,8 @@ class NowPlayingActivity : AppCompatActivity() {
 
         val dataSourceFactory = DefaultDataSourceFactory(this, Util.getUserAgent(this, getString(R.string.app_name)))
 
-        val mediaSource: MediaSource = ExtractorMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(RICOMMENDER_URI))
+        val musicURL = getMusicURL()
+        val mediaSource: MediaSource = ExtractorMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(musicURL))
 
         musicPlayer.prepare(mediaSource)
         musicPlayer.playWhenReady = true
@@ -60,5 +70,9 @@ class NowPlayingActivity : AppCompatActivity() {
     private fun releasePlayer() {
         musicPlayer.stop()
         musicPlayer.release()
+    }
+
+    private fun getMusicURL(): String {
+        return RICOMMENDER_URI + musicId.toString()
     }
 }
