@@ -1,6 +1,7 @@
 package com.reeechart.ricomusic.fragments
 
 import android.os.Bundle
+import android.support.constraint.ConstraintLayout
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -16,6 +17,8 @@ import com.reeechart.ricomusic.controllers.BrowseFragmentController
 
 class BrowseFragment: Fragment() {
     lateinit var recommendationList: RecyclerView
+    lateinit var forYouSection: ConstraintLayout
+    lateinit var fetchingRecommendationProgress: ConstraintLayout
     private lateinit var controller: BrowseFragmentController
     private lateinit var linearLayoutManager: LinearLayoutManager
 
@@ -34,6 +37,8 @@ class BrowseFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_browse, container, false)
+        forYouSection = rootView.findViewById(R.id.forYouSection)
+        fetchingRecommendationProgress = rootView.findViewById(R.id.fetchingRecommendationProgress)
         recommendationList = rootView.findViewById(R.id.recommendationList)
         linearLayoutManager = LinearLayoutManager(this.context)
         recommendationList.layoutManager = linearLayoutManager

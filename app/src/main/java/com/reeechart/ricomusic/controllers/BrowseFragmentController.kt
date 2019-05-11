@@ -2,6 +2,7 @@ package com.reeechart.ricomusic.controllers
 
 import android.content.Context
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.reeechart.ricomusic.adapters.RecommendationItemAdapter
 import com.reeechart.ricomusic.fragments.BrowseFragment
@@ -49,6 +50,7 @@ class BrowseFragmentController(fragment: BrowseFragment) {
                     .subscribe(
                             { result ->
                                 Log.d(LOG_TAG, result.toString())
+                                hideFetchingRecommendationProgress()
                                 inflateRecommendation(result)
                             },
                             { error ->
@@ -61,10 +63,15 @@ class BrowseFragmentController(fragment: BrowseFragment) {
         }
     }
 
+    private fun hideFetchingRecommendationProgress() {
+        browseFragment?.fetchingRecommendationProgress?.visibility = View.GONE
+    }
+
     private fun inflateRecommendation(recommendations: List<Music>) {
         Log.d(LOG_TAG, "Inflating...")
         val recommendationListAdapter = RecommendationItemAdapter(browseFragment?.context, recommendations)
-        browseFragment?.recommendationList?.adapter = recommendationListAdapter
+        this.browseFragment?.forYouSection?.visibility = View.VISIBLE
+        this.browseFragment?.recommendationList?.adapter = recommendationListAdapter
         Log.d(LOG_TAG, "Inflated successfully")
     }
 }
