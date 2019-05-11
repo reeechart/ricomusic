@@ -20,4 +20,10 @@
     <string name="default_music_artist">Artist</string>
     <string name="heading_for_you_section">For You</string>
     <string name="registering_text">Registering... This might take a while</string>
+    <string name="default_calculating_recommendation">Calculating recommendation...</string>
+    <string name="recommendation_is_on_its_way">Recommendation is on its way!</string>
+    <string name="wait_recommendation_is_coming">Wait! Recommendation is coming!</string>
+    <string name="standby_and_get_your_recommendation">Standby and get your recommendation!</string>
+    <string name="multiplying_this_and_this_and_that">Multiplying this and this and that...</string>
+    <string name="packaging_your_recommendation">Packaging your recommendation...</string>
 </resources>
