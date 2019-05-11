@@ -82,9 +82,4 @@ class MainActivity : AppCompatActivity() {
     fun refreshWeather(view: View) {
         profileFragment.setWeatherToView()
     }
-
-    fun playSampleMusic(view: View) {
-        val playMusicIntent = Intent(this, NowPlayingActivity::class.java)
-        this.startActivity(playMusicIntent)
-    }
 }
