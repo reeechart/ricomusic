@@ -15,6 +15,7 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.reeechart.ricomusic.R
 import kotlinx.android.synthetic.main.activity_now_playing.*
+import kotlinx.android.synthetic.main.component_music_player.*
 
 class NowPlayingActivity : AppCompatActivity() {
     private val DEBUG_TAG: String = this.javaClass.simpleName
@@ -24,22 +25,24 @@ class NowPlayingActivity : AppCompatActivity() {
     }
 
     private lateinit var musicPlayer: SimpleExoPlayer
-    private var musicId: Int = 0
-    private var musicRank: Int = 0
-    private var musicTitle: String = ""
-    private var musicArtist: String = ""
+    private var playedMusicId: Int = 0
+    private var playedMusicRank: Int = 0
+    private var playedMusicTitle: String = ""
+    private var playedMusicArtist: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_now_playing)
 
-        musicId = intent.getIntExtra("musicId", 0)
-        musicRank = intent.getIntExtra("musicRank", 0)
-        musicTitle = intent.getStringExtra("musicTitle")
-        musicArtist = intent.getStringExtra("musicArtist")
+        playedMusicId = intent.getIntExtra("musicId", 0)
+        playedMusicRank = intent.getIntExtra("musicRank", 0)
+        playedMusicTitle = intent.getStringExtra("musicTitle")
+        playedMusicArtist = intent.getStringExtra("musicArtist")
 
 //        val playMusicIntent = Intent(this, AudioPlayerService::class.java)
 //        Util.startForegroundService(this, playMusicIntent)
+        setMusicMetadataToView()
+
         initializePlayer()
 
         val dataSourceFactory = DefaultDataSourceFactory(this, Util.getUserAgent(this, getString(R.string.app_name)))
@@ -73,6 +76,13 @@ class NowPlayingActivity : AppCompatActivity() {
     }
 
     private fun getMusicURL(): String {
-        return RICOMMENDER_URI + musicId.toString()
+        return RICOMMENDER_URI + playedMusicId.toString()
+    }
+
+    private fun setMusicMetadataToView() {
+        musicTitle.text = playedMusicTitle
+        musicArtist.text = playedMusicArtist
+        musicTitle.isSelected = true
+        musicArtist.isSelected = true
     }
 }
