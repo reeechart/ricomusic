@@ -44,7 +44,7 @@ class BrowseFragmentController(fragment: BrowseFragment) {
         Log.d(LOG_TAG, location)
         Log.d(LOG_TAG, weather)
         if (StringChecker.isValidToGetRecommendation(username, location, weather)) {
-            disposable = ricommenderApiCaller.getRecommendation(RECOMMENDATION_LENGTH, username, location, weather)
+            disposable = ricommenderApiCaller.getRecommendation(RECOMMENDATION_LENGTH, username, location.toLowerCase(), weather.toLowerCase())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(

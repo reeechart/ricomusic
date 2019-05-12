@@ -1,8 +1,6 @@
 package com.reeechart.ricomusic.network.ricommender
 
-import com.reeechart.ricomusic.models.AuthResponse
-import com.reeechart.ricomusic.models.Music
-import com.reeechart.ricomusic.models.User
+import com.reeechart.ricomusic.models.*
 import io.reactivex.Observable
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -21,11 +19,7 @@ interface RicommenderApiService {
             Observable<List<Music>>
 
     @POST("/history/add")
-    fun addHistory(@Field("user") user: String,
-                   @Field("music") music: Int,
-                   @Field("location") location: String,
-                   @Field("weather") weather: String,
-                   @Field("music_rank") musicRank: Int)
+    fun addHistory(@Body history: History): Observable<HistoryResponse.Result>
 
     @GET("/user/login/{username}")
     fun login(@Path(value="username", encoded=true) username: String): Observable<AuthResponse.Result>
