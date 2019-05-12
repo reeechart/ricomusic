@@ -51,7 +51,11 @@ class BrowseFragmentController(fragment: BrowseFragment) {
                             { result ->
                                 Log.d(LOG_TAG, result.toString())
                                 hideFetchingRecommendationProgress()
-                                inflateRecommendation(result)
+                                try {
+                                    inflateRecommendation(result)
+                                } catch(e: Exception) {
+
+                                }
                             },
                             { error ->
                                 Log.d(LOG_TAG, error.message)
