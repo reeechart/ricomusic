@@ -18,7 +18,7 @@ import io.reactivex.schedulers.Schedulers
  */
 class BrowseFragmentController(fragment: BrowseFragment) {
     companion object {
-        const val RECOMMENDATION_LENGTH: Int = 20
+        const val RECOMMENDATION_LENGTH: Int = 50
         const val APP_NAME: String = "Ricomusic"
     }
 
