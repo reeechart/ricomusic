@@ -49,7 +49,7 @@ class BrowseFragmentController(fragment: BrowseFragment) {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(
                             { result ->
-                                Log.d(LOG_TAG, result.toString())
+//                                Log.d(LOG_TAG, result.toString())
                                 hideFetchingRecommendationProgress()
                                 try {
                                     inflateRecommendation(result)
@@ -58,9 +58,12 @@ class BrowseFragmentController(fragment: BrowseFragment) {
                                 }
                             },
                             { error ->
-                                Log.d(LOG_TAG, error.message)
                                 hideFetchingRecommendationProgress()
-                                Toast.makeText(browseFragment?.context, error.message, Toast.LENGTH_SHORT).show()
+                                try {
+                                    Toast.makeText(browseFragment?.context, error.message, Toast.LENGTH_SHORT).show()
+                                } catch(e: Exception) {
+
+                                }
                             }
                     )
         } else {
