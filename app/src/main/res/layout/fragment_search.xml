@@ -16,6 +16,7 @@
         android:drawableLeft="@drawable/ic_util_search"
         android:ems="10"
         android:hint="@string/song_search_hint"
+        android:imeOptions="actionSearch"
         android:inputType="text"
         android:paddingBottom="12dp"
         android:paddingEnd="12dp"

@@ -18,6 +18,9 @@ interface RicommenderApiService {
                           @Query("weather") weather: String):
             Observable<List<Music>>
 
+    @GET("/music/search")
+    fun searchMusic(@Query("search") title: String): Observable<MusicSearchResponse.Results>
+
     @POST("/history/add")
     fun addHistory(@Body history: History): Observable<HistoryResponse.Result>
 
