@@ -59,6 +59,7 @@ class BrowseFragmentController(fragment: BrowseFragment) {
                             },
                             { error ->
                                 Log.d(LOG_TAG, error.message)
+                                hideFetchingRecommendationProgress()
                                 Toast.makeText(browseFragment?.context, error.message, Toast.LENGTH_SHORT).show()
                             }
                     )
