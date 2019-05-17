@@ -2,10 +2,12 @@ package com.reeechart.ricomusic.network.ricommender
 
 import com.reeechart.ricomusic.models.*
 import io.reactivex.Observable
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by Reeechart on 06-Apr-19.
@@ -34,10 +36,17 @@ interface RicommenderApiService {
         private val BASE_URL: String = "http://157.230.243.204"
 
         fun create(): RicommenderApiService {
+            val okHttpClient = OkHttpClient.Builder()
+                    .readTimeout(120, TimeUnit.SECONDS)
+                    .connectTimeout(120, TimeUnit.SECONDS)
+                    .writeTimeout(120, TimeUnit.SECONDS)
+                    .build()
+
             val retrofit = Retrofit.Builder()
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .baseUrl(BASE_URL)
+                    .client(okHttpClient)
                     .build()
 
             return retrofit.create(RicommenderApiService::class.java)
